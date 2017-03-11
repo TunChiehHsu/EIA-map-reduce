@@ -1,8 +1,8 @@
 # EIA_single_machine
 
-\section{Introduction}
+###Introduction
 
-A \textit{directed cycle} means that
+A directed cycle means that
 a directed path consists of a sequence of vertices starting and ending at the same vertex.
 In a trading network,
 a directed cycle means members of a cycle construct a closed trading system,
@@ -15,7 +15,7 @@ It should be noted that the choice of starting vertex is not important
 since traversing the same cyclic sequence of edges from different starting vertices produces the same closed walk,
 i.e., \textit{repeated cycles}.
 
-\subsection{Problems in Traditional Cycle detection}
+###Problems in Traditional Cycle detection
 There are several problems in the literature of traditional cycle detection.
 One of the major topics is the detection of ``inner cycle''.
 Suppose a path with length $k$ is denoted as $k$-length path or $P_{k}$ in abbreviation.
@@ -25,14 +25,6 @@ $C \rightarrow D \rightarrow E \rightarrow C$ was included in a
 $P_{6} = A \rightarrow B \rightarrow C \rightarrow D \rightarrow E \rightarrow C \rightarrow F$
 Traditional method utilizing matrix computing or other detection algorithm did not take inner cycle into consideration.
 The extension or application based on these inner cycles may result in a waste of memory and produce additional computational burden.
-
-\begin{figure}[!h]
-    \centering
-    \mbox{
-    \subfigure[Example of an Inner Cycle]{\includegraphics[trim = 1cm 5cm 1cm 4cm,clip =TRUE,width=0.4\textwidth]{plot/innercycle.eps}}
-    \subfigure[Repeated Cycle]{\includegraphics[trim = 1cm 5cm 1cm 4cm,clip =TRUE,width=0.4\textwidth]{plot/repeated.eps}}}
-    \caption{Two Major Problems in Traditional Cycle detection}\label{inner}
-    \end{figure}
 
 The other problem is ``repeated cycle''.
 A cycle might be recorded repeatedly since that each cycle could be represented in different ways by selecting different nodes as the ``head''.
