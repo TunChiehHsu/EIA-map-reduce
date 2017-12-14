@@ -1,5 +1,5 @@
-# EIA single machine
+# Endpoint Inward Algorithm
 
-This respository provide an algorithm to detect cycles in a given network. 
+This respository provide an Endpoint Inward Algorithm to detect cycles in a given network. 
 
-More detail could be found in the PDF file. 
+More detail example usage could be found in the PDF file and ipython file.
