@@ -2,4 +2,4 @@
 
 This respository provide an Endpoint Inward Algorithm to detect cycles in a given network. 
 
-More detail example usage could be found in the PDF file and ipython file.
+More technical detail and toy example could be found in the PDF file and ipython file.
