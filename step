@@ -1,0 +1,15 @@
+#!/bin/bash
+N=$1
+NN=$((N*2))
+N2=$((N+1))
+echo ${N}
+# cat t${N2}h/* t${N2}l/* | ./lmr 128k 2 'python merge_mapper.py' 'python merge_reducer.py' t$((NN + 1))cycle
+yarn jar $HADOOP_STREAMING -files merge_mapper.py,merge_reducer.py -mapper 'python merge_mapper.py' -reducer 'python merge_reducer.py' -input sn/t${N2}h/* sn/t${N2}l/* -output sn/t$((NN + 1))cycle
+
+# cat t${N2}h/* T_headkey.mapout | ./lmr 128k 2 'python exph_mapper.py' 'python expH_reducer.py' t$((N2 + 1))h
+yarn jar $HADOOP_STREAMING -files exph_mapper.py,exph_reducer.py -mapper 'python exph_mapper.py' -reducer 'python exph_reducer.py' -input sn/t${N2}h/* sn/T_headkey.mapout -output sn/t$((N2 + 1))h
+# cat t${N2}l/* T_tailkey.mapout | ./lmr 128k 2 'python expl_mapper.py' 'python expL_reducer.py' t$((N2 + 1))l
+yarn jar $HADOOP_STREAMING -files expl_mapper.py,expl_reducer.py -mapper 'python expl_mapper.py' -reducer 'python expl_reducer.py' -input sn/t${N2}l/* sn/T_tailkey.mapout -output sn/t$((N2 + 1))l
+
+# cat t$((N2 + 1))h/* T${N2}l/* | ./lmr 128k 2 'python merge_mapper.py' 'python merge_reducer.py' t$((NN + 2))cycle
+yarn jar $HADOOP_STREAMING -files merge_mapper.py,merge_reducer.py -mapper 'python merge_mapper.py' -reducer 'python merge_reducer.py' -input sn/t$((N2 + 1))h/* sn/t${N2}l/* -output sn/t$((NN + 2))cycle

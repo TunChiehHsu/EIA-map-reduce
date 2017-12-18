@@ -1,0 +1,8 @@
+#!/bin/bash
+
+s=$1
+
+cat $1 | python T2H_T2L.py 1>t2h.txt 2>t2l.txt
+hdfs dfs -mkdir sn/t2h sn/t2l
+hdfs dfs -put t2h.txt sn/t2h
+hdfs dfs -put t2l.txt sn/t2l
