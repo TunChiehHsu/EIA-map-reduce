@@ -5,8 +5,3 @@ language: python
 python:
   - 3.4
 
-install:
-  - pip install codecov
-
-after_success:
-  - codecov
